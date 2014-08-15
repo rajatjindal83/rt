@@ -54,6 +54,15 @@ C<RT::Interface::Email::> to the name to form a package name, and then
 C<use>'s this module.  The module should implement
 L<RT::Interface::Email::Role>.
 
+=head2 Plugin methods
+
+L<RT::Interface::Email::Role> defines a number of functions which are
+useful for immediately aborting processing.  They include
+L<RT::Interface::Email::Role/SUCCESS>,
+L<RT::Interface::Email::Role/FAILURE>, and
+L<RT::Interface::Email::Role/TMPFAIL>; read their descriptions for
+information on how to immediately abort processing from mail plugins.
+
 =head2 Plugin hooks
 
 Mail plugins are expected to provide one or more of the following
