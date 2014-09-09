@@ -179,8 +179,9 @@ our %META;
         Widget          => '/Widgets/Form/Select',
         WidgetArguments => {
             Description => 'Username format', # loc
-            Values      => [qw(concise verbose)],
+            Values      => [qw(role concise verbose)],
             ValuesLabel => {
+                role    => 'Verbose unprivileged, short privileged', # loc
                 concise => 'Short usernames', # loc
                 verbose => 'Name and email address', # loc
             },
