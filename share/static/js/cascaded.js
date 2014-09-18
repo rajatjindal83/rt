@@ -4,7 +4,10 @@ function filter_cascade_by_id (id, vals, is_hierarchical) {
 
     if ( element.tagName == 'SELECT' ) {
         var complete_select = document.getElementById(id + "-Complete" );
-        return filter_cascade_select(element, complete_select, vals, is_hierarchical);
+        filter_cascade_select(element, complete_select, vals, is_hierarchical);
+        if ( jQuery(element).hasClass('chosen') ) {
+            jQuery(element).trigger('chosen:updated');
+        }
     }
     else {
         if ( !( vals instanceof Array ) ) {
