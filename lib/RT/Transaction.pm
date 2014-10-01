@@ -863,6 +863,15 @@ sub _FormatUser {
                 $self->OldValue, $self->NewValue ); #loc()
         }
     },
+    AttachmentError => sub {
+        my $self = shift;
+        if ( defined $self->Data ) {
+            return ( "File '[_1]' insert failed because [_2].", $self->Data, $self->NewValue ); #loc()
+        }
+        else {
+            return ( "Content insert failed because [_1].", $self->NewValue ); #loc()
+        }
+    },
     "Forward Transaction" => sub {
         my $self = shift;
         my $recipients = join ", ", map {

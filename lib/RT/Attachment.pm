@@ -177,6 +177,7 @@ sub Create {
 
         unless ($id) {
             $RT::Logger->crit("Attachment insert failed - ". $RT::Handle->dbh->errstr);
+            $self->TransactionObj->Object->_NewTransaction( Type => 'AttachmentError', ActivateScrips => 0, Data => $Filename, NewValue => substr($RT::Handle->dbh->errstr,0,255) );
             return ($id);
         }
 
@@ -221,6 +222,7 @@ sub Create {
         }
         else {
             $RT::Logger->crit("Attachment insert failed: ". $RT::Handle->dbh->errstr);
+            $self->TransactionObj->Object->_NewTransaction( Type => 'AttachmentError', ActivateScrips => 0, Data => $Filename, NewValue => substr($RT::Handle->dbh->errstr,0,255) );
         }
         return $id;
     }
